@@ -22,15 +22,21 @@ class Recipes extends Component {
   render() {
     return (
       <div className="container">
+        <div className="col-sm-12 col-md-4 col-lg-3">
+          <h1>Home</h1>{" "}
+        </div>
+
         <div className="row">
           <div className="col-sm-12 col-md-4 col-lg-3">
             <Link to="/create-recipe">
               <div className="card text-white light-blue mb-3">
                 <div className="card-header">
-                <h3>+ New Recipe</h3> 
+                  <h3>+ New Recipe</h3>
                 </div>
                 <div className="card-body">
-                  <p className="card-text">Click here to add your own recipe!</p>
+                  <p className="card-text">
+                    Click here to add your own recipe!
+                  </p>
                 </div>
               </div>
             </Link>
