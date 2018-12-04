@@ -1,17 +1,48 @@
-import React, { Component } from "react";
-import NavBar from "./components/NavBar/NavBar";
+import React, { Component } from 'react';
+import {Route, withRouter} from 'react-router-dom';
+import auth0Client from './Auth';
+import NavBar from './NavBar/NavBar';
+import Recipe from './Recipe/Recipe';
+import Recipes from './Recipes/Recipes';
+import Callback from './Callback';
+import CreateRecipe from './CreateRecipe/CreateRecipe';
+import SecuredRoute from './SecuredRoute/SecuredRoute';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checkingSession: true,
+    }
+  }
+
+  async componentDidMount() {
+    if (this.props.location.pathname === '/callback') {
+      this.setState({checkingSession:false});
+      return;
+    }
+    try {
+      await auth0Client.silentAuth();
+      this.forceUpdate();
+    } catch (err) {
+      if (err.error !== 'login_required') console.log(err.error);
+    }
+    this.setState({checkingSession:false});
+  }
+
   render() {
     return (
       <div>
-        <NavBar />
-        <div>
-          <p>Work in progress.</p>
-        </div>
+        <NavBar/>
+        <Route exact path='/' component={Recipes}/>
+        <Route exact path='/recipe/:recipeId' component={Recipe}/>
+        <Route exact path='/callback' component={Callback}/>
+        <SecuredRoute path='/create-recipe'
+                      component={CreateRecipe}
+                      checkingSession={this.state.checkingSession} />
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
