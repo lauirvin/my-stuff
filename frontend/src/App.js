@@ -7,6 +7,7 @@ import Recipes from "./components/Recipes/Recipes";
 import Callback from "./Callback";
 import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import SecuredRoute from "./components/SecuredRoute/SecuredRoute";
+import ErrorPage from "./ErrorPage";
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class App extends Component {
         <Route exact path="/" component={Recipes} />
         <Route exact path="/recipe/:recipeId" component={Recipe} />
         <Route exact path="/callback" component={Callback} />
+        <Route component={ErrorPage} />
         <SecuredRoute
           path="/create-recipe"
           component={CreateRecipe}
