@@ -46,7 +46,7 @@ class CreateRecipe extends Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <div className="card border-primary">
+            <div className="card">
               <div className="card-header"><h3>Create new recipe</h3></div>
               <div className="card-body text-left">
                 <div className="form-group">

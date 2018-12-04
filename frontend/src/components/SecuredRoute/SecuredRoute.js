@@ -10,13 +10,15 @@ function SecuredRoute(props) {
       render={() => {
         if (checkingSession)
           return (
-            <div className="text-center">
-              <h2 className="error-message-padding">
-                Please sign in to create a new recipe
-              </h2>
-              <button className="btn dark-space" onClick={auth0Client.signIn}>
-                Sign In
-              </button>
+            <div className="container">
+              <div className="text-center">
+                <h2 className="error-message-padding">
+                  Please sign in to create a new recipe
+                </h2>
+                <button className="btn dark-space" onClick={auth0Client.signIn}>
+                  Sign In
+                </button>
+              </div>
             </div>
           );
 
