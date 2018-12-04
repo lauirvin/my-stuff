@@ -22,9 +22,9 @@ class Recipes extends Component {
   render() {
     return (
       <div className="container">
-        <div className="col-sm-12 col-md-4 col-lg-3">
-          <h1>Home</h1>{" "}
-        </div>
+        
+          <h1 className="page-title">Recipe Feed</h1>
+          <hr></hr>
 
         <div className="row">
           <div className="col-sm-12 col-md-4 col-lg-3">
@@ -41,7 +41,6 @@ class Recipes extends Component {
               </div>
             </Link>
           </div>
-          {this.state.recipes === null && <p>Loading recipes...</p>}
           {this.state.recipes &&
             this.state.recipes.map(recipe => (
               <div key={recipe.id} className="col-sm-12 col-md-4 col-lg-3">

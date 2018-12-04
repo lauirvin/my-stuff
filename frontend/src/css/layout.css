@@ -1,32 +1,32 @@
 /* Bootswatch customizations */
 
 .nav-bar {
-    padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
 }
 
 .btn {
-    padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
 }
 
 .nav-bar-logo {
-    width: 4em;
+  width: 4em;
 }
 
 .nav-container {
-    max-width: 1280px;
-    margin: 0 auto;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .error-message-padding {
-    padding-top: 2em;
-    padding-bottom: 1em;
+  padding-top: 2em;
+  padding-bottom: 1em;
 }
 
 .mr-2 {
-    margin-right: 2.5rem !important;
-    margin-bottom: 0;
-    font-size: 1.3em;
-    vertical-align: middle;
+  margin-right: 2.5rem !important;
+  margin-bottom: 0;
+  font-size: 1.3em;
+  vertical-align: middle;
 }
 
 .container {
@@ -36,4 +36,29 @@
   height: 100vh;
   padding-right: 1.5em;
   padding-left: 1.5em;
+}
+
+.page-title {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+hr {
+  margin-bottom: 3em;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+.card {
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.card:hover {
+  background-color: #d7eaec;
 }
