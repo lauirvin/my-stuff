@@ -2,6 +2,8 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import auth0Client from "../../Auth";
 
+import logo from '../../media/logo.png'
+
 function NavBar(props) {
   const signOut = () => {
     auth0Client.signOut();
@@ -12,7 +14,7 @@ function NavBar(props) {
     <nav className="navbar-light bg-primary fixed-top">
       <div className="navbar nav-container">
         <Link className="navbar-brand" to="/">
-          <img alt="logo" className="nav-bar-logo" src="./logo.png" />
+          <img alt="logo" className="nav-bar-logo" src={logo} />
         </Link>
         {!auth0Client.isAuthenticated() && (
           <button className="btn dark-space" onClick={auth0Client.signIn}>

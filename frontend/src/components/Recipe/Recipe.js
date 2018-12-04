@@ -21,9 +21,8 @@ class Recipe extends Component {
     const {
       match: { params }
     } = this.props;
-    const recipe = (await axios.get(
-      `http://localhost:8081/${params.recipeId}`
-    )).data;
+    const recipe = (await axios.get(`http://localhost:8081/${params.recipeId}`))
+      .data;
     this.setState({
       recipe
     });

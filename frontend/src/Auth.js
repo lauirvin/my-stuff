@@ -1,15 +1,15 @@
-import auth0 from 'auth0-js';
+import auth0 from "auth0-js";
 
 class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
       // the following three lines MUST be updated
-      domain: 'lauirvin.eu.auth0.com',
-      audience: 'https://lauirvin.eu.auth0.com/userinfo',
-      clientID: 'VrJTIwBiRdwPHLAxhh1pnQugG0kf13VC',
-      redirectUri: 'http://localhost:3000/callback',
-      responseType: 'id_token',
-      scope: 'openid profile'
+      domain: "lauirvin.eu.auth0.com",
+      audience: "https://lauirvin.eu.auth0.com/userinfo",
+      clientID: "VrJTIwBiRdwPHLAxhh1pnQugG0kf13VC",
+      redirectUri: "http://localhost:3000/callback",
+      responseType: "id_token",
+      scope: "openid profile"
     });
 
     this.getProfile = this.getProfile.bind(this);
@@ -45,7 +45,7 @@ class Auth {
         this.setSession(authResult);
         resolve();
       });
-    })
+    });
   }
 
   setSession(authResult) {
@@ -57,8 +57,8 @@ class Auth {
 
   signOut() {
     this.auth0.logout({
-      returnTo: 'http://localhost:3000',
-      clientID: 'VrJTIwBiRdwPHLAxhh1pnQugG0kf13VC',
+      returnTo: "http://localhost:3000",
+      clientID: "VrJTIwBiRdwPHLAxhh1pnQugG0kf13VC"
     });
   }
 
