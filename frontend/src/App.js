@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {Route, withRouter} from 'react-router-dom';
 import auth0Client from './Auth';
-import NavBar from './NavBar/NavBar';
-import Recipe from './Recipe/Recipe';
-import Recipes from './Recipes/Recipes';
+import NavBar from './components/NavBar/NavBar';
+import Recipe from './components/Recipe/Recipe';
+import Recipes from './components/Recipes/Recipes';
 import Callback from './Callback';
-import CreateRecipe from './CreateRecipe/CreateRecipe';
-import SecuredRoute from './SecuredRoute/SecuredRoute';
+import CreateRecipe from './components/CreateRecipe/CreateRecipe';
+import SecuredRoute from './components/SecuredRoute/SecuredRoute';
 
 class App extends Component {
   constructor(props) {

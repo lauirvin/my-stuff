@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
     id: q.id,
     title: q.title,
     description: q.description,
-    answers: q.answers.length
+    comments: q.comments.length
   }));
   res.send(qs);
 });
@@ -65,23 +65,23 @@ app.post("/", checkJwt, (req, res) => {
     id: recipes.length + 1,
     title,
     description,
-    answers: [],
+    comments: [],
     author: req.user.name
   };
   recipes.push(createRecipe);
   res.status(200).send();
 });
 
-// insert a new answer to a recipe
-app.post("/answer/:id", checkJwt, (req, res) => {
-  const { answer } = req.body;
+// insert a new comment to a recipe
+app.post("/comment/:id", checkJwt, (req, res) => {
+  const { comment } = req.body;
 
   const recipe = recipes.filter(q => q.id === parseInt(req.params.id));
   if (recipes.length > 1) return res.status(500).send();
   if (recipes.length === 0) return res.status(404).send();
 
-  recipe[0].answers.push({
-    answer,
+  recipe[0].comments.push({
+    comment,
     author: req.user.name
   });
 
