@@ -29,12 +29,12 @@ class SubmitComment extends Component {
     return (
       <Fragment>
         <div className="form-group text-center">
-          <label htmlFor="exampleInputEmail1">Comments:</label>
+          <label htmlFor="comments">Comments:</label>
           <input
             type="text"
             onChange={(e) => {this.updateComment(e.target.value)}}
             className="form-control"
-            placeholder="Share your comment:"
+            placeholder="Share your comment"
             value={this.state.comment}
           />
         </div>

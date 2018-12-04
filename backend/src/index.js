@@ -61,14 +61,14 @@ const checkJwt = jwt({
 // insert a new recipe
 app.post("/", checkJwt, (req, res) => {
   const { title, description } = req.body;
-  const createRecipe = {
+  const newRecipe = {
     id: recipes.length + 1,
     title,
     description,
     comments: [],
     author: req.user.name
   };
-  recipes.push(createRecipe);
+  recipes.push(newRecipe);
   res.status(200).send();
 });
 
@@ -77,8 +77,8 @@ app.post("/comment/:id", checkJwt, (req, res) => {
   const { comment } = req.body;
 
   const recipe = recipes.filter(q => q.id === parseInt(req.params.id));
-  if (recipes.length > 1) return res.status(500).send();
-  if (recipes.length === 0) return res.status(404).send();
+  if (recipe.length > 1) return res.status(500).send();
+  if (recipe.length === 0) return res.status(404).send();
 
   recipe[0].comments.push({
     comment,

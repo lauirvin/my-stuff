@@ -50,7 +50,7 @@ class CreateRecipe extends Component {
               <div className="card-header"><h3>Create new recipe</h3></div>
               <div className="card-body text-left">
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">Title:</label>
+                  <label htmlFor="title">Title:</label>
                   <input
                     disabled={this.state.disabled}
                     type="text"
@@ -60,7 +60,7 @@ class CreateRecipe extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">Description:</label>
+                  <label htmlFor="description">Description:</label>
                   <input
                     disabled={this.state.disabled}
                     type="text"
