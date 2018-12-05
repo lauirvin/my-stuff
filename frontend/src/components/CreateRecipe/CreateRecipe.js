@@ -68,6 +68,7 @@ class CreateRecipe extends Component {
                 <div className="form-group">
                   <label htmlFor="title">Title:</label>
                   <input
+                    maxLength="30"
                     disabled={this.state.disabled}
                     type="text"
                     onBlur={e => {
