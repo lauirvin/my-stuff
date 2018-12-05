@@ -72,7 +72,7 @@ class CreateRecipe extends Component {
                 <UploadImage />
                 <div className="form-group">
                   <label htmlFor="description">Description:</label>
-                  <input
+                  <textarea
                     disabled={this.state.disabled}
                     type="text"
                     onBlur={e => {
@@ -80,7 +80,7 @@ class CreateRecipe extends Component {
                     }}
                     className="form-control"
                     placeholder="Please enter the description of your recipe"
-                  />
+                  ></textarea>
                 </div>
                 <button
                   disabled={this.state.disabled}
