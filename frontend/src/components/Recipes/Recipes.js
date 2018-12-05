@@ -13,7 +13,6 @@ class Recipes extends Component {
 
   async componentDidMount() {
     const recipes = (await axios.get("http://localhost:8081/")).data;
-
     this.setState({
       recipes
     });
@@ -22,9 +21,8 @@ class Recipes extends Component {
   render() {
     return (
       <div className="container">
-        
-          <h1 className="page-title">Recipe Feed</h1>
-          <hr></hr>
+        <h1 className="page-title">Recipe Feed</h1>
+        <hr />
 
         <div className="row">
           <div className="col-sm-12 col-md-4 col-lg-3">
@@ -50,8 +48,8 @@ class Recipes extends Component {
                       Comments: {recipe.comments}
                     </div>
                     <div className="card-body">
-                      <h4 className="card-title">{recipe.title}</h4>
-                      <p className="card-text">{recipe.description}</p>
+                      <h4 className="card-title recipes-title">{recipe.title}</h4>
+                      <p className="card-text recipes-subtitle">{recipe.description}</p>
                     </div>
                   </div>
                 </Link>
