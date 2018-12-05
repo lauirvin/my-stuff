@@ -12,8 +12,15 @@ class CreateRecipe extends Component {
     this.state = {
       disabled: false,
       title: "",
-      description: ""
+      description: "",
+      ingredients: ""
     };
+  }
+
+  updateIngredients(value) {
+    this.setState({
+      ingredients: value
+    });
   }
 
   updateDescription(value) {
@@ -37,7 +44,8 @@ class CreateRecipe extends Component {
       "http://localhost:8081",
       {
         title: this.state.title,
-        description: this.state.description
+        description: this.state.description,
+        ingredients: this.state.ingredients
       },
       {
         headers: { Authorization: `Bearer ${auth0Client.getIdToken()}` }
@@ -79,15 +87,27 @@ class CreateRecipe extends Component {
                       this.updateDescription(e.target.value);
                     }}
                     className="form-control"
-                    placeholder="Please enter the description of your recipe"
-                  ></textarea>
+                    placeholder="Enter the description of your recipe"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="ingredients">Ingredients:</label>
+                  <textarea
+                    disabled={this.state.disabled}
+                    type="text"
+                    onBlur={e => {
+                      this.updateIngredients(e.target.value);
+                    }}
+                    className="form-control"
+                    placeholder="Enter the ingredients of your recipe"
+                  />
                 </div>
                 <button
                   disabled={this.state.disabled}
                   className="btn dark-space"
                   onClick={() => {
                     this.submit();
-                    document.getElementById('uploadButton').click()
+                    document.getElementById("uploadButton").click();
                   }}
                 >
                   Submit

@@ -65,6 +65,8 @@ a .card:hover {
     margin: 0 auto;
     text-align: center;
     width:100%;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 #myImage {
@@ -77,4 +79,8 @@ a .card:hover {
 
 #uploadButton {
     display: none;
+}
+
+.recipe-subtitle {
+    margin-bottom: 3%;
 }

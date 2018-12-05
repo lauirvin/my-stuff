@@ -62,6 +62,10 @@ class Recipe extends Component {
             <div className="recipe-image-container">
               <img className="" src={imagePath} />
             </div>
+            <hr className="my-4" />
+            <h2><b>Ingredients:</b></h2>
+            <p>{recipe.ingredients}</p>
+            <hr className="my-4" />
             <p className="lead">{recipe.description}</p>
             <hr className="my-4" />
             <SubmitComment

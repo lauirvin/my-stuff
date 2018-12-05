@@ -45,6 +45,7 @@ app.get("/", (req, res) => {
     id: q.id,
     title: q.title,
     description: q.description,
+    ingredients: q.ingredients,
     comments: q.comments.length
   }));
   res.send(qs);
@@ -80,7 +81,7 @@ const checkJwt = jwt({
   algorithms: ["RS256"]
 });
 
-app.use(express.static('public'))
+app.use(express.static("public"));
 
 // insert new image
 const storage = multer.diskStorage({
@@ -107,11 +108,12 @@ app.post("/upload", upload, (req, res) => {
 
 // insert a new recipe
 app.post("/", checkJwt, (req, res) => {
-  const { title, description } = req.body;
+  const { title, description, ingredients } = req.body;
   const newRecipe = {
     id: recipes.length + 1,
     title,
     description,
+    ingredients,
     comments: [],
     author: req.user.name
   };
