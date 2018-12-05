@@ -63,21 +63,29 @@ class Recipe extends Component {
               <img className="" src={imagePath} />
             </div>
             <hr className="my-4" />
-            <h2><b>Ingredients:</b></h2>
+            <h2 className="recipe-subtitle">
+              <b>Ingredients:</b>
+            </h2>
             <p>{recipe.ingredients}</p>
             <hr className="my-4" />
+            <h2 className="recipe-subtitle">
+              <b>Description:</b>
+            </h2>
             <p className="lead">{recipe.description}</p>
             <hr className="my-4" />
+
+            <h2 className="recipe-subtitle">
+              <b>Comments:</b>
+            </h2>
+            {recipe.comments.map((comment, idx) => (
+              <li className="lead" key={idx}>
+                {comment.comment}
+              </li>
+            ))}
             <SubmitComment
               recipeId={recipe.id}
               submitComment={this.submitComment}
             />
-            <p>Comments:</p>
-            {recipe.comments.map((comment, idx) => (
-              <p className="lead" key={idx}>
-                {comment.comment}
-              </p>
-            ))}
           </div>
         </div>
       </div>
