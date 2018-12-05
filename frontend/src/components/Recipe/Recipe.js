@@ -32,7 +32,6 @@ class Recipe extends Component {
       image
     });
     console.log(image);
-    console.log(recipe);
   }
 
   async submitComment(comment) {
@@ -50,7 +49,6 @@ class Recipe extends Component {
 
   render() {
     const { recipe, image } = this.state;
-
     if ((recipe, image === null)) return <p>Loading ...</p>;
     const imagePath =
       "http://localhost:8081/" + image.file.replace("public/", "");
@@ -64,7 +62,6 @@ class Recipe extends Component {
             <div className="recipe-image-container">
               <img className="" src={imagePath} />
             </div>
-            <hr className="my-4"/>
             <p className="lead">{recipe.description}</p>
             <hr className="my-4" />
             <SubmitComment
