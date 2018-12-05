@@ -36,23 +36,33 @@ class CreateRecipe extends Component {
   }
 
   async submit() {
-    this.setState({
-      disabled: true
-    });
+    var title = document.getElementById("title");
+    var description = document.getElementById("descriptionBox");
+    var ingredients = document.getElementById("ingredientsBox");
 
-    await axios.post(
-      "http://localhost:8081",
-      {
-        title: this.state.title,
-        description: this.state.description,
-        ingredients: this.state.ingredients
-      },
-      {
-        headers: { Authorization: `Bearer ${auth0Client.getIdToken()}` }
-      }
-    );
-
-    this.props.history.push("/");
+    if (title && !title.value) {
+      alert("Please fill in the missing blanks!");
+    } else if (description && !description.value) {
+      alert("Please fill in the missing blanks!");
+    } else if (ingredients && !ingredients.value) {
+      alert("Please fill in the missing blanks!");
+    } else {
+      this.setState({
+        disabled: true
+      });
+      await axios.post(
+        "http://localhost:8081",
+        {
+          title: this.state.title,
+          description: this.state.description,
+          ingredients: this.state.ingredients
+        },
+        {
+          headers: { Authorization: `Bearer ${auth0Client.getIdToken()}` }
+        }
+      );
+      this.props.history.push("/");
+    }
   }
 
   render() {
@@ -68,6 +78,7 @@ class CreateRecipe extends Component {
                 <div className="form-group">
                   <label htmlFor="title">Title:</label>
                   <input
+                    id="title"
                     maxLength="30"
                     disabled={this.state.disabled}
                     type="text"
@@ -82,6 +93,7 @@ class CreateRecipe extends Component {
                 <div className="form-group">
                   <label htmlFor="description">Description:</label>
                   <textarea
+                    id="descriptionBox"
                     disabled={this.state.disabled}
                     type="text"
                     onBlur={e => {
@@ -94,6 +106,7 @@ class CreateRecipe extends Component {
                 <div className="form-group">
                   <label htmlFor="ingredients">Ingredients:</label>
                   <textarea
+                    id="ingredientsBox"
                     disabled={this.state.disabled}
                     type="text"
                     onBlur={e => {
@@ -104,6 +117,7 @@ class CreateRecipe extends Component {
                   />
                 </div>
                 <button
+                  id="submitButton"
                   disabled={this.state.disabled}
                   className="btn dark-space"
                   onClick={() => {

@@ -60,7 +60,7 @@ class Recipe extends Component {
           <div className="jumbotron col-12">
             <h1 className="display-3">{recipe.title}</h1>
             <div className="recipe-image-container">
-              <img className="" src={imagePath} />
+              <img alt="" src={imagePath} />
             </div>
             <hr className="my-4" />
             <h2 className="recipe-subtitle">

@@ -42,6 +42,7 @@ export default class UploadImage extends React.Component {
           name="myImage"
           accept="image/x-png,image/jpeg"
           onChange={this.onChange}
+          required
         />
         <button id="uploadButton" className="btn btn-success" type="submit">Upload</button>
       </form>
