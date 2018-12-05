@@ -9,3 +9,7 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+@import "variables/colors.css";
+@import "variables/layout.css";
+@import "variables/media-queries.css";

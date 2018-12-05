@@ -7,7 +7,8 @@ class Recipe extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipe: null
+      recipe: null,
+      image: null
     };
 
     this.submitComment = this.submitComment.bind(this);
@@ -23,9 +24,15 @@ class Recipe extends Component {
     } = this.props;
     const recipe = (await axios.get(`http://localhost:8081/${params.recipeId}`))
       .data;
+    const image = (await axios.get(
+      `http://localhost:8081/upload/${params.recipeId}`
+    )).data;
     this.setState({
-      recipe
+      recipe,
+      image
     });
+    console.log(image);
+    console.log(recipe);
   }
 
   async submitComment(comment) {
@@ -42,13 +49,22 @@ class Recipe extends Component {
   }
 
   render() {
-    const { recipe } = this.state;
-    if (recipe === null) return <p>Loading ...</p>;
+    const { recipe, image } = this.state;
+
+    if ((recipe, image === null)) return <p>Loading ...</p>;
+    const imagePath =
+      "http://localhost:8081/" + image.file.replace("public/", "");
+
+    console.log(imagePath);
     return (
       <div className="container">
         <div className="row">
           <div className="jumbotron col-12">
             <h1 className="display-3">{recipe.title}</h1>
+            <div className="recipe-image-container">
+              <img className="" src={imagePath} />
+            </div>
+            <hr className="my-4"/>
             <p className="lead">{recipe.description}</p>
             <hr className="my-4" />
             <SubmitComment

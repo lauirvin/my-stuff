@@ -1,0 +1,64 @@
+/* High Resolution Desktop or Laptop Devices */
+
+@media (min-width: 1281px) {
+    .recipe-image-container img {
+        min-width: 40em;
+        max-width: 50em;
+    }
+}
+
+/* Low Resolution Desktop or Laptops */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .recipe-image-container img {
+        min-width: 40em;
+        max-width: 50em;
+    }
+}
+
+/* Tablet Devices (Portrait) */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .recipe-image-container img {
+        min-width: 35em;
+        max-width: 40em;
+    }
+}
+
+/* Tablet Devices (Landscape) */
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .recipe-image-container img {
+        min-width: 35em;
+        max-width: 50em;
+    }
+}
+
+/* High Resolution Mobile Devices or Low Resolution Tablets */
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .recipe-image-container img {
+        min-width: 35em;
+        max-width: 40em;
+    }
+}
+
+/* Mobile Devices - Smartphones */
+
+@media (min-width: 375px) and (max-width: 480px) {
+    .recipe-image-container img {
+        min-width: 10em;
+        max-width: 22em;
+    }
+}
+
+/* Low resolution smartphones */
+@media (min-width: 320px) and (max-width: 374px) {
+    .recipe-image-container img {
+        min-width: 15em;
+        max-width: 19em;
+    }
+    .jumbotron {
+        padding: 4rem 1rem;
+    }
+}
