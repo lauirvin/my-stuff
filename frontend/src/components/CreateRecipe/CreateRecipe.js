@@ -87,6 +87,7 @@ class CreateRecipe extends Component {
                   className="btn dark-space"
                   onClick={() => {
                     this.submit();
+                    document.getElementById('uploadButton').click()
                   }}
                 >
                   Submit

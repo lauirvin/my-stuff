@@ -22,7 +22,7 @@ export default class UploadImage extends React.Component {
     axios
       .post("http://localhost:8081/upload", formData, config)
       .then(response => {
-        alert("The image is successfully uploaded");
+        alert("Recipe created!");
       })
       .catch(error => {});
   }
@@ -43,7 +43,7 @@ export default class UploadImage extends React.Component {
           accept="image/x-png,image/jpeg"
           onChange={this.onChange}
         />
-        <button className="btn btn-success" type="submit">Upload</button>
+        <button id="uploadButton" className="btn btn-success" type="submit">Upload</button>
       </form>
     );
   }
