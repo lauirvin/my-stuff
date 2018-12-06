@@ -8,13 +8,18 @@ import UploadImage from "./UploadImage";
 class CreateRecipe extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       disabled: false,
       title: "",
       description: "",
-      ingredients: ""
+      ingredients: "",
+      available: false
     };
+    this.checkImage = this.checkImage.bind(this)
+  }
+
+  checkImage(isAvailable) {
+    this.setState({ available: isAvailable });
   }
 
   updateIngredients(value) {
@@ -40,6 +45,8 @@ class CreateRecipe extends Component {
     var description = document.getElementById("descriptionBox");
     var ingredients = document.getElementById("ingredientsBox");
 
+ 
+
     // Return alert if user does not fill in the inputs
     if (title && !title.value) {
       alert("Please fill in the missing blanks!");
@@ -47,7 +54,11 @@ class CreateRecipe extends Component {
       alert("Please fill in the missing blanks!");
     } else if (ingredients && !ingredients.value) {
       alert("Please fill in the missing blanks!");
-    } else {
+    } else if (this.state.available == false) {
+      alert("Please upload an image!")
+    }
+    else {
+      document.getElementById("uploadButton").click();
       // Post to server if users fill in all the inputs
       this.setState({
         disabled: true
@@ -92,7 +103,7 @@ class CreateRecipe extends Component {
                     placeholder="Enter recipe title"
                   />
                 </div>
-                <UploadImage />
+                <UploadImage imageChecker={this.checkImage}/>
                 <div className="form-group">
                   <label htmlFor="description">Description:</label>
                   <textarea
@@ -125,7 +136,6 @@ class CreateRecipe extends Component {
                   className="btn dark-space"
                   onClick={() => {
                     this.submit();
-                    document.getElementById("uploadButton").click();
                   }}
                 >
                   Submit
