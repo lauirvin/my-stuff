@@ -1,0 +1,42 @@
+.recipe-image-container {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+#myImage {
+  display: none;
+}
+
+#myImageLabel {
+  margin: 0;
+}
+
+#uploadButton {
+  display: none;
+}
+
+.recipe-subtitle {
+  margin-bottom: 3%;
+}
+
+.recipes-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 1.5em;
+  max-height: 32px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.recipes-subtitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 1.5em;
+  max-height: 10vh;
+  -webkit-box-orient: vertical;
+}

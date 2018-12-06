@@ -40,6 +40,7 @@ class CreateRecipe extends Component {
     var description = document.getElementById("descriptionBox");
     var ingredients = document.getElementById("ingredientsBox");
 
+    // Return alert if user does not fill in the inputs
     if (title && !title.value) {
       alert("Please fill in the missing blanks!");
     } else if (description && !description.value) {
@@ -47,10 +48,12 @@ class CreateRecipe extends Component {
     } else if (ingredients && !ingredients.value) {
       alert("Please fill in the missing blanks!");
     } else {
+      // Post to server if users fill in all the inputs
       this.setState({
         disabled: true
       });
       await axios.post(
+        // Passes the following to '/'
         "http://localhost:8081",
         {
           title: this.state.title,
@@ -58,7 +61,7 @@ class CreateRecipe extends Component {
           ingredients: this.state.ingredients
         },
         {
-          headers: { Authorization: `Bearer ${auth0Client.getIdToken()}` }
+          headers: { Authorization: `Bearer ${auth0Client.getIdToken()}` } // Check authorization and fetch token
         }
       );
       this.props.history.push("/");

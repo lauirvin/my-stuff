@@ -1,4 +1,3 @@
-//import dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -10,26 +9,25 @@ const jwksRsa = require("jwks-rsa");
 const path = require("path");
 const multer = require("multer");
 
-// define the Express app
 const app = express();
 
-// the database
+// Define array where data will be stored
 const recipes = [];
 const images = [];
 
-// enhance your app security with Helmet
+// Helmet for securing application
 app.use(helmet());
 
-// use bodyParser to parse application/json content-type
+// bodyParser to parse application/json content-type
 app.use(bodyParser.json());
 
-// enable all CORS requests
+// Enable CORS requests
 app.use(cors());
 
 // log HTTP requests
 app.use(morgan("combined"));
 
-//retrieve image
+// Retrieve image data
 app.get("/upload", (req, res) => {
   const is = images.map(q => ({
     id: q.id,
@@ -39,7 +37,7 @@ app.get("/upload", (req, res) => {
   res.send(is);
 });
 
-// retrieve all recipes
+// Retrieve all recipes data
 app.get("/", (req, res) => {
   const qs = recipes.map(q => ({
     id: q.id,
@@ -51,7 +49,7 @@ app.get("/", (req, res) => {
   res.send(qs);
 });
 
-// get a specific recipe
+// Get a specific recipe
 app.get("/:id", (req, res) => {
   const recipe = recipes.filter(q => q.id === parseInt(req.params.id));
   if (recipe.length > 1) return res.status(500).send();
@@ -59,7 +57,7 @@ app.get("/:id", (req, res) => {
   res.send(recipe[0]);
 });
 
-// get a specific image
+// Get a specific image
 app.get("/upload/:id", (req, res) => {
   const image = images.filter(q => q.id === parseInt(req.params.id));
   if (image.length > 1) return res.status(500).send();
@@ -83,7 +81,7 @@ const checkJwt = jwt({
 
 app.use(express.static("public"));
 
-// insert new image
+// Insert new image
 const storage = multer.diskStorage({
   destination: "./public/uploads/",
   filename: function(req, file, cb) {
@@ -106,7 +104,7 @@ app.post("/upload", upload, (req, res) => {
   console.log(newImage);
 });
 
-// insert a new recipe
+// Insert a new recipe
 app.post("/", checkJwt, (req, res) => {
   const { title, description, ingredients } = req.body;
   const newRecipe = {
@@ -121,7 +119,7 @@ app.post("/", checkJwt, (req, res) => {
   res.status(200).send();
 });
 
-// insert a new comment to a recipe
+// Insert a new comment to a recipe
 app.post("/comment/:id", checkJwt, (req, res) => {
   const { comment } = req.body;
 
@@ -137,7 +135,7 @@ app.post("/comment/:id", checkJwt, (req, res) => {
   res.status(200).send();
 });
 
-// start the server
+// Start the server
 app.listen(8081, () => {
   console.log("listening on port 8081");
 });

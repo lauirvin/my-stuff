@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import auth0Client from './Auth';
 
+
+// Callback when handling authentication
 class Callback extends Component {
   async componentDidMount() {
     await auth0Client.handleAuthentication();

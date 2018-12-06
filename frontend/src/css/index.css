@@ -13,3 +13,4 @@ code {
 @import "variables/colors.css";
 @import "variables/layout.css";
 @import "variables/media-queries.css";
+@import "variables/global.css";

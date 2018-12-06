@@ -10,7 +10,6 @@ class Recipe extends Component {
       recipe: null,
       image: null
     };
-
     this.submitComment = this.submitComment.bind(this);
   }
 
@@ -22,38 +21,38 @@ class Recipe extends Component {
     const {
       match: { params }
     } = this.props;
-    const recipe = (await axios.get(`http://localhost:8081/${params.recipeId}`))
+    const recipe = (await axios.get(`http://localhost:8081/${params.recipeId}`)) // Fetch recipe data
       .data;
     const image = (await axios.get(
-      `http://localhost:8081/upload/${params.recipeId}`
+      `http://localhost:8081/upload/${params.recipeId}` // Fetch uploaded image data
     )).data;
     this.setState({
-      recipe,
-      image
+      recipe, // Update recipe state to data fetched
+      image // Update image state to image path
     });
-    console.log(image);
   }
 
   async submitComment(comment) {
+    // Post comment to server
     await axios.post(
-      `http://localhost:8081/comment/${this.state.recipe.id}`,
+      `http://localhost:8081/comment/${this.state.recipe.id}`, 
       {
         comment
       },
       {
+        // Fetch ID token from Auth0 to check if comment is authorized
         headers: { Authorization: `Bearer ${auth0Client.getIdToken()}` }
       }
     );
-    await this.refreshRecipe();
+    await this.refreshRecipe(); // Refresh page to fetch new data due to new comments
+
   }
 
   render() {
     const { recipe, image } = this.state;
     if ((recipe, image === null)) return <p>Loading ...</p>;
     const imagePath =
-      "http://localhost:8081/" + image.file.replace("public/", "");
-
-    console.log(imagePath);
+      "http://localhost:8081/" + image.file.replace("public/", ""); // Create image path 
     return (
       <div className="container">
         <div className="row">

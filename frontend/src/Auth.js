@@ -3,7 +3,7 @@ import auth0 from "auth0-js";
 class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
-      // the following three lines MUST be updated
+      // auth0 configurations
       domain: "lauirvin.eu.auth0.com",
       audience: "https://lauirvin.eu.auth0.com/userinfo",
       clientID: "VrJTIwBiRdwPHLAxhh1pnQugG0kf13VC",
@@ -51,13 +51,12 @@ class Auth {
   setSession(authResult) {
     this.idToken = authResult.idToken;
     this.profile = authResult.idTokenPayload;
-    // set the time that the id token will expire at
-    this.expiresAt = authResult.idTokenPayload.exp * 1000;
+    this.expiresAt = authResult.idTokenPayload.exp * 3000; // set the time that the id token will expire at
   }
 
   signOut() {
     this.auth0.logout({
-      returnTo: "http://localhost:3000",
+      returnTo: "http://localhost:3000", // Return to client
       clientID: "VrJTIwBiRdwPHLAxhh1pnQugG0kf13VC"
     });
   }

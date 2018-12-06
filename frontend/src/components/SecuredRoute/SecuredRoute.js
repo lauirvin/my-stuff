@@ -8,7 +8,7 @@ function SecuredRoute(props) {
     <Route
       path={path}
       render={() => {
-        if (checkingSession)
+        if (checkingSession) // If user is not authenticated: 
           return (
             <div className="container">
               <div className="text-center">

@@ -5,16 +5,16 @@ import axios from "axios";
 class Recipes extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      recipes: null
+      recipes: null // Empty recipes
     };
   }
 
   async componentDidMount() {
+    // Fetch recipes from server
     const recipes = (await axios.get("http://localhost:8081/")).data;
     this.setState({
-      recipes
+      recipes // Update recipes with data fetched from server
     });
   }
 
@@ -23,7 +23,7 @@ class Recipes extends Component {
       <div className="container">
         <h1 className="page-title">Recipe Feed</h1>
         <hr />
-
+        {/* Add new recipe card button */}
         <div className="row">
           <div className="col-sm-12 col-md-4 col-lg-3">
             <Link to="/create-recipe">
@@ -39,6 +39,7 @@ class Recipes extends Component {
               </div>
             </Link>
           </div>
+          {/* Display recipe data to card: */}
           {this.state.recipes &&
             this.state.recipes.map(recipe => (
               <div key={recipe.id} className="col-sm-12 col-md-4 col-lg-3">
@@ -48,8 +49,12 @@ class Recipes extends Component {
                       Comments: {recipe.comments}
                     </div>
                     <div className="card-body">
-                      <h4 className="card-title recipes-title">{recipe.title}</h4>
-                      <p className="card-text recipes-subtitle">{recipe.description}</p>
+                      <h4 className="card-title recipes-title">
+                        {recipe.title}
+                      </h4>
+                      <p className="card-text recipes-subtitle">
+                        {recipe.description}
+                      </p>
                     </div>
                   </div>
                 </Link>
