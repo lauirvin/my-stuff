@@ -135,6 +135,15 @@ app.post("/comment/:id", checkJwt, (req, res) => {
   res.status(200).send();
 });
 
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "client/build")));
+  // Handle React routing, return all requests to React app
+  app.get("*", function(req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+}
+
 // Start the server
 app.listen(8081, () => {
   console.log("listening on port 8081");
