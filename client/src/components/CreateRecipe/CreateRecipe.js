@@ -54,7 +54,7 @@ class CreateRecipe extends Component {
       alert("Please fill in the missing blanks!");
     } else if (ingredients && !ingredients.value) {
       alert("Please fill in the missing blanks!");
-    } else if (this.state.available == false) {
+    } else if (this.state.available === false) {
       alert("Please upload an image!")
     }
     else {

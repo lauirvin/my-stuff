@@ -14,7 +14,7 @@ export default class UploadImage extends React.Component {
   }
   onFormSubmit(e) {
     e.preventDefault();
-    if (this.state.available == false) {
+    if (this.state.available === false) {
       console.log("no image");
     } else {
       const formData = new FormData();
