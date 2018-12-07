@@ -17,4 +17,5 @@ Recipe sharing application.
 * [Auth0] (https://auth0.com/) - Relational DBMS and authentication used
 
 ## Authors
-* **Irvin Ives Lau** - *Initial work* - [lauirvin](https://github.com/lauirvin)
+* **Irvin Ives Lau** - *Initial work* - [lauirvin](https://github.com/lauirvin),  [laui](https://github.coventry.ac.uk/lauirvin)
+* **Student ID** - 7537703

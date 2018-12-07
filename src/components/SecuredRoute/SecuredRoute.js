@@ -13,7 +13,7 @@ function SecuredRoute(props) {
             <div className="container">
               <div className="text-center">
                 <h2 className="error-message-padding">
-                  Please sign in to create a new recipe
+                  Please sign in to list a new item
                 </h2>
                 <button className="btn dark-space" onClick={auth0Client.signIn}>
                   Sign In

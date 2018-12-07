@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
 import auth0Client from "./Auth";
 import NavBar from "./components/NavBar/NavBar";
-import Recipe from "./components/Recipe/Recipe";
-import Recipes from "./components/Recipes/Recipes";
+import Item from "./components/Item/Item";
+import Items from "./components/Items/Items";
 import Callback from "./Callback";
-import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
+import CreateItem from "./components/CreateItem/CreateItem";
 import SecuredRoute from "./components/SecuredRoute/SecuredRoute";
 
 class App extends Component {
@@ -34,12 +34,12 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <Route exact path="/" component={Recipes} />
-        <Route exact path="/recipe/:recipeId" component={Recipe} />
+        <Route exact path="/" component={Items} />
+        <Route exact path="/item/:itemId" component={Item} />
         <Route exact path="/callback" component={Callback} />
         <SecuredRoute
-          path="/create-recipe"
-          component={CreateRecipe}
+          path="/create-item"
+          component={CreateItem}
           checkingSession={this.state.checkingSession}
         />
       </div>

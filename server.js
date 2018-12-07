@@ -12,7 +12,7 @@ const multer = require("multer");
 const app = express();
 
 // Define array where data will be stored
-const recipes = [];
+const items = [];
 const images = [];
 
 // Helmet for securing application
@@ -37,24 +37,28 @@ app.get("/upload", (req, res) => {
   res.send(is);
 });
 
-// Retrieve all recipes data
+// Retrieve all items data
 app.get("/", (req, res) => {
-  const qs = recipes.map(q => ({
+  const qs = items.map(q => ({
     id: q.id,
     title: q.title,
     description: q.description,
-    ingredients: q.ingredients,
+    currency: q.currency,
+    price: q.price,
+    region: q.region,
+    country: q.country,
+    condition: q.condition,
     comments: q.comments.length
   }));
   res.send(qs);
 });
 
-// Get a specific recipe
+// Get a specific item
 app.get("/:id", (req, res) => {
-  const recipe = recipes.filter(q => q.id === parseInt(req.params.id));
-  if (recipe.length > 1) return res.status(500).send();
-  if (recipe.length === 0) return res.status(404).send();
-  res.send(recipe[0]);
+  const item = items.filter(q => q.id === parseInt(req.params.id));
+  if (item.length > 1) return res.status(500).send();
+  if (item.length === 0) return res.status(404).send();
+  res.send(item[0]);
 });
 
 // Get a specific image
@@ -96,7 +100,7 @@ const upload = multer({
 
 app.post("/upload", upload, (req, res) => {
   const newImage = {
-    id: recipes.length + 1,
+    id: items.length + 1,
     file: req.file.path
   };
   images.push(newImage);
@@ -104,30 +108,34 @@ app.post("/upload", upload, (req, res) => {
   console.log(newImage);
 });
 
-// Insert a new recipe
+// Insert a new item
 app.post("/", checkJwt, (req, res) => {
-  const { title, description, ingredients } = req.body;
-  const newRecipe = {
-    id: recipes.length + 1,
+  const { title, description, currency, price, region, country, condition} = req.body;
+  const newItem = {
+    id: items.length + 1,
     title,
     description,
-    ingredients,
+    currency,
+    price,
+    region,
+    country,
+    condition,
     comments: [],
     author: req.user.name
   };
-  recipes.push(newRecipe);
+  items.push(newItem);
   res.status(200).send();
 });
 
-// Insert a new comment to a recipe
+// Insert a new comment to a item
 app.post("/comment/:id", checkJwt, (req, res) => {
   const { comment } = req.body;
 
-  const recipe = recipes.filter(q => q.id === parseInt(req.params.id));
-  if (recipe.length > 1) return res.status(500).send();
-  if (recipe.length === 0) return res.status(404).send();
+  const item = items.filter(q => q.id === parseInt(req.params.id));
+  if (item.length > 1) return res.status(500).send();
+  if (item.length === 0) return res.status(404).send();
 
-  recipe[0].comments.push({
+  item[0].comments.push({
     comment,
     author: req.user.name
   });

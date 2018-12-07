@@ -1,4 +1,4 @@
-.recipe-image-container {
+.item-image-container {
   margin: 0 auto;
   text-align: center;
   width: 100%;
@@ -18,11 +18,11 @@
   display: none;
 }
 
-.recipe-subtitle {
+.item-subtitle {
   margin-bottom: 3%;
 }
 
-.recipes-title {
+.items-title {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -32,7 +32,7 @@
   -webkit-box-orient: vertical;
 }
 
-.recipes-subtitle {
+.items-subtitle {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
