@@ -6,11 +6,11 @@
   margin-top: 5%;
 }
 
-#myImage {
+#imageBox {
   display: none;
 }
 
-#myImageLabel {
+#imageBoxLabel {
   margin: 0;
 }
 

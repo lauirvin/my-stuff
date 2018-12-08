@@ -4,8 +4,6 @@ import auth0Client from "../../Auth";
 import axios from "axios";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
-import UploadImage from "./UploadImage";
-
 class CreateItem extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +15,8 @@ class CreateItem extends Component {
       country: "",
       region: "",
       condition: "",
-      currency: ""
+      currency: "",
+      image: []
     };
   }
 
@@ -64,53 +63,35 @@ class CreateItem extends Component {
   }
 
   async submit() {
-    var title = document.getElementById("title");
-    var description = document.getElementById("descriptionBox");
-    var price = document.getElementById("priceBox");
-    var country = document.getElementById("countryBox");
-    var region = document.getElementById("regionBox");
-    var condition = document.getElementById("conditionBox");
-    var currency = document.getElementById("currencyBox");
-    console.log(this.state.currency);
+    var data = {
+      title: this.state.title,
+      description: this.state.description,
+      price: this.state.price,
+      country: this.state.country,
+      region: this.state.region,
+      condition: this.state.condition,
+      currency: this.state.currency
+    };
 
-    // Return alert if user does not fill in the inputs
-    if (title && !title.value) {
-      alert("Please fill in the missing blanks!");
-    } else if (description && !description.value) {
-      alert("Please fill in the missing blanks!");
-    } else if (price && !price.value) {
-      alert("Please fill in the missing blanks!");
-    } else if (country && !country.value) {
-      alert("Please fill in the missing blanks!");
-    } else if (region && !region.value) {
-      alert("Please fill in the missing blanks!");
-    } else if (condition && !condition.value) {
-      alert("Please fill in the missing blanks!");
-    } else if (currency && !currency.value) {
-      alert("Please fill in the missing blanks!");
-    } else {
-      // Post to server if users fill in all the inputs
-      this.setState({
-        disabled: true
-      });
-      await axios.post(
-        // Passes the following to '/'
-        "http://localhost:8081",
-        {
-          title: this.state.title,
-          description: this.state.description,
-          price: this.state.price,
-          country: this.state.country,
-          region: this.state.region,
-          condition: this.state.condition,
-          currency: this.state.currency
-        },
-        {
-          headers: { Authorization: `Bearer ${auth0Client.getIdToken()}` } // Check authorization and fetch token
-        }
-      );
-      this.props.history.push("/");
+    const formData = new FormData();
+    formData.append("imageBox", this.state.image); // Add image to form data
+
+    for (var key in data) {
+      formData.append(key, data[key]);
     }
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${auth0Client.getIdToken()}`, // Check authorization and fetch token
+        "content-type": "multipart/form-data"
+      }
+    };
+    this.setState({
+      disabled: true
+    });
+
+    await axios.post("http://localhost:8081/", formData, config); // Post to '/upload' on the server
+    this.props.history.push("/");
   }
 
   render() {
@@ -127,6 +108,7 @@ class CreateItem extends Component {
                 <div className="form-group">
                   <label htmlFor="title">Title:</label>
                   <input
+                    name="title"
                     id="title"
                     maxLength="30"
                     disabled={this.state.disabled}
@@ -138,17 +120,36 @@ class CreateItem extends Component {
                     placeholder="Enter item title"
                   />
                 </div>
-                <UploadImage />
+                <div className="form-group">
+                  <label
+                    id="imageBoxLabel"
+                    htmlFor="imageBox"
+                    className="btn btn-primary "
+                  >
+                    Choose image
+                  </label>
+                  <input
+                    type="file"
+                    name="imageBox"
+                    id="imageBox"
+                    accept="image/*"
+                    onChange={e => {
+                      this.setState({ image: e.target.files[0] });
+                    }}
+                  />
+                </div>
+
                 <div className="form-group">
                   <label htmlFor="price">Price:</label>
                   <br />
                   <select
                     id="currencyBox"
+                    defaultValue="default"
                     onBlur={e => {
                       this.updateCurrency(e.target.value);
                     }}
                   >
-                    <option value="" selected disabled>
+                    <option value="default" disabled>
                       Select currency
                     </option>
                     <option value="$">$</option>
@@ -189,12 +190,13 @@ class CreateItem extends Component {
                   <label htmlFor="condition">Condition:</label>
                   <br />
                   <select
+                    defaultValue="default"
                     id="conditionBox"
                     onBlur={e => {
                       this.updateCondition(e.target.value);
                     }}
                   >
-                    <option value="" selected disabled>
+                    <option value="default" disabled>
                       Select condition
                     </option>
                     <option value="New">New</option>
@@ -223,7 +225,6 @@ class CreateItem extends Component {
                   className="btn dark-space"
                   onClick={() => {
                     this.submit();
-                    document.getElementById("uploadButton").click();
                   }}
                 >
                   Submit

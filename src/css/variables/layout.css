@@ -60,3 +60,11 @@ a:-webkit-any-link {
 a .card:hover {
   background-color: #d7eaec;
 }
+
+.card-body-image {
+  padding: 0;
+}
+
+.card-body-image img {
+  max-width: 100%;
+}

@@ -13,8 +13,6 @@ const app = express();
 
 // Define array where data will be stored
 const items = [];
-const images = [];
-
 // Helmet for securing application
 app.use(helmet());
 
@@ -27,16 +25,6 @@ app.use(cors());
 // log HTTP requests
 app.use(morgan("combined"));
 
-// Retrieve image data
-app.get("/upload", (req, res) => {
-  const is = images.map(q => ({
-    id: q.id,
-    file: q.file
-  }));
-  console.log(is);
-  res.send(is);
-});
-
 // Retrieve all items data
 app.get("/", (req, res) => {
   const qs = items.map(q => ({
@@ -48,7 +36,8 @@ app.get("/", (req, res) => {
     region: q.region,
     country: q.country,
     condition: q.condition,
-    comments: q.comments.length
+    comments: q.comments.length,
+    image: q.image.replace("public/", "")
   }));
   res.send(qs);
 });
@@ -59,14 +48,6 @@ app.get("/:id", (req, res) => {
   if (item.length > 1) return res.status(500).send();
   if (item.length === 0) return res.status(404).send();
   res.send(item[0]);
-});
-
-// Get a specific image
-app.get("/upload/:id", (req, res) => {
-  const image = images.filter(q => q.id === parseInt(req.params.id));
-  if (image.length > 1) return res.status(500).send();
-  if (image.length === 0) return res.status(404).send();
-  res.send(image[0]);
 });
 
 const checkJwt = jwt({
@@ -83,9 +64,10 @@ const checkJwt = jwt({
   algorithms: ["RS256"]
 });
 
+// Declare public folder as static directory
 app.use(express.static("public"));
 
-// Insert new image
+// Multer configurations
 const storage = multer.diskStorage({
   destination: "./public/uploads/",
   filename: function(req, file, cb) {
@@ -96,21 +78,18 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage,
   limits: { fileSize: 1000000 }
-}).single("myImage");
+}).single("imageBox");
 
-app.post("/upload", upload, (req, res) => {
-  const newImage = {
-    id: items.length + 1,
-    file: req.file.path
-  };
-  images.push(newImage);
-  res.status(200).send();
-  console.log(newImage);
-});
-
-// Insert a new item
-app.post("/", checkJwt, (req, res) => {
-  const { title, description, currency, price, region, country, condition} = req.body;
+app.post("/", [checkJwt, upload], (req, res) => {
+  const {
+    title,
+    description,
+    currency,
+    price,
+    region,
+    country,
+    condition
+  } = req.body;
   const newItem = {
     id: items.length + 1,
     title,
@@ -120,6 +99,7 @@ app.post("/", checkJwt, (req, res) => {
     region,
     country,
     condition,
+    image: req.file.path,
     comments: [],
     author: req.user.name
   };

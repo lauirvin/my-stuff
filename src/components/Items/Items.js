@@ -21,7 +21,7 @@ class items extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="page-title">Items for sale!</h1>
+        <h1 className="page-title">Items Feed</h1>
         <hr />
         {/* Add new item card button */}
         <div className="row">
@@ -43,13 +43,18 @@ class items extends Component {
               <div key={item.id} className="col-sm-12 col-md-4 col-lg-3">
                 <Link to={`/item/${item.id}`}>
                   <div className="card text-white mb-3 moonstone-blue">
-                    <div className="card-header">Price: {item.currency}{item.price}</div>
-                    <div className="card-header">Country: {item.country}, {item.region}</div>
+                    <div className="card-header">
+                      Price: {item.currency}
+                      {item.price}
+                    </div>
+                    <div className="card-header">
+                      Country: {item.country}, {item.region}
+                    </div>
                     <div className="card-body">
                       <h4 className="card-title items-title">{item.title}</h4>
-                      <p className="card-text items-subtitle">
-                        {item.comments}
-                      </p>
+                    </div>
+                    <div className="card-body card-body-image">
+                      <img src={item.image} alt="" />
                     </div>
                   </div>
                 </Link>
