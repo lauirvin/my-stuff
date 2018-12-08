@@ -7,8 +7,7 @@ class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: null,
-      image: null
+      item: null
     };
     this.submitComment = this.submitComment.bind(this);
   }
@@ -23,11 +22,8 @@ class Item extends Component {
     } = this.props;
     const item = (await axios.get(`http://localhost:8081/${params.itemId}`)) // Fetch item data
       .data;
-    const image = (await axios.get(`http://localhost:8081/${params.itemId}`))
-      .data; // Fetch item data
     this.setState({
-      item,
-      image
+      item
     });
   }
 
@@ -47,16 +43,17 @@ class Item extends Component {
   }
 
   render() {
-    const { item, image} = this.state;
-    if ((item && image)=== null) return <p>Loading ...</p>;
-    console.log(image);
+    const { item } = this.state;
+    if (item === null) return <p>Loading ...</p>;
+    const imagePath = item.image.replace("public/", "../");
+    console.log(imagePath);
     return (
       <div className="container">
         <div className="row">
           <div className="jumbotron col-12">
             <h1 className="display-3">{item.title}</h1>
             <div className="item-image-container">
-              {/* <img alt="" src= /> */}
+              <img alt="" src={imagePath} />
             </div>
             <hr className="my-4" />
             <h2 className="item-subtitle">
