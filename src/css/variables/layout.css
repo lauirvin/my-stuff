@@ -63,6 +63,7 @@ a .card:hover {
 
 .card-body-image {
   padding: 0;
+  text-align: center;
 }
 
 .card-body-image img {
