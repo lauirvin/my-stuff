@@ -9,7 +9,7 @@
 }
 
 .nav-bar-logo {
-  width: 4em;
+  width: 6em;
 }
 
 .nav-container {
@@ -31,7 +31,7 @@
 
 .container {
   max-width: 1280px;
-  padding-top: 125px;
+  padding-top: 85px;
   box-shadow: 0 0 3px 0px #dadada;
   height: 100vh;
 }
