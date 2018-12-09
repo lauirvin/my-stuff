@@ -1,10 +1,10 @@
-# Yummy App
-Recipe sharing application.
+# My Stuff: Classified Ads Web App
+My Stuff is a classified ads web application that allow users to advertise their things for selling.
 
 ## Deployment
 1. Locate the repository in bash
 2. Run ```npm run dev```
-3. Open browser and navigate to ```localhost.3000/```
+3. Open browser and navigate to ```localhost:3000/```
 
 ### Prerequisites
 1. Install NodeJS https://nodejs.org/en/
