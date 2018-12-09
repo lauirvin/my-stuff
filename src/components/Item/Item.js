@@ -30,7 +30,7 @@ class Item extends Component {
   async submitComment(comment) {
     // Post comment to server
     await axios.post(
-      `http://localhost:8081/comment/${this.state.item.id}`,
+      `http://ec2-18-130-97-126.eu-west-2.compute.amazonaws.com:9000/comment/${this.state.item.id}`,
       {
         comment
       },

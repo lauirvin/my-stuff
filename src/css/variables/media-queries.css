@@ -1,64 +1,74 @@
 /* High Resolution Desktop or Laptop Devices */
 
 @media (min-width: 1281px) {
-    .item-image-container img {
-        min-width: 40em;
-        max-width: 50em;
-    }
+  .item-image-container img {
+    min-width: 40em;
+    max-width: 50em;
+  }
 }
 
 /* Low Resolution Desktop or Laptops */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
-    .item-image-container img {
-        min-width: 40em;
-        max-width: 50em;
-    }
+  .item-image-container img {
+    min-width: 40em;
+    max-width: 50em;
+  }
 }
 
 /* Tablet Devices (Portrait) */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    .item-image-container img {
-        min-width: 35em;
-        max-width: 40em;
-    }
+  .item-image-container img {
+    min-width: 35em;
+    max-width: 40em;
+  }
 }
 
 /* Tablet Devices (Landscape) */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    .item-image-container img {
-        min-width: 35em;
-        max-width: 50em;
-    }
+  .item-image-container img {
+    min-width: 35em;
+    max-width: 50em;
+  }
 }
 
 /* High Resolution Mobile Devices or Low Resolution Tablets */
 
 @media (min-width: 481px) and (max-width: 767px) {
-    .item-image-container img {
-        min-width: 35em;
-        max-width: 40em;
-    }
+  .item-image-container img {
+    min-width: 35em;
+    max-width: 40em;
+  }
+  .page-title {
+    margin-top: 1.5em;
+  }
 }
 
 /* Mobile Devices - Smartphones */
 
 @media (min-width: 375px) and (max-width: 480px) {
-    .item-image-container img {
-        min-width: 10em;
-        max-width: 22em;
-    }
+  .item-image-container img {
+    min-width: 10em;
+    max-width: 22em;
+  }
+  .page-title {
+    margin-top: 1.5em;
+  }
 }
 
 /* Low resolution smartphones */
+
 @media (min-width: 320px) and (max-width: 374px) {
-    .item-image-container img {
-        min-width: 15em;
-        max-width: 19em;
-    }
-    .jumbotron {
-        padding: 4rem 1rem;
-    }
+  .item-image-container img {
+    min-width: 15em;
+    max-width: 19em;
+  }
+  .jumbotron {
+    padding: 4rem 1rem;
+  }
+  .page-title {
+    margin-top: 1.5em;
+  }
 }
