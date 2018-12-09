@@ -7,7 +7,7 @@ class Auth {
       domain: "lauirvin.eu.auth0.com",
       audience: "https://lauirvin.eu.auth0.com/userinfo",
       clientID: "VrJTIwBiRdwPHLAxhh1pnQugG0kf13VC",
-      redirectUri: "http://localhost:3000/callback",
+      redirectUri: "http://ec2-18-130-97-126.eu-west-2.compute.amazonaws.com:8080/callback",
       responseType: "id_token",
       scope: "openid profile"
     });
@@ -56,7 +56,7 @@ class Auth {
 
   signOut() {
     this.auth0.logout({
-      returnTo: "http://localhost:3000", // Return to client
+      returnTo: "http://ec2-18-130-97-126.eu-west-2.compute.amazonaws.com:8080/", // Return to client
       clientID: "VrJTIwBiRdwPHLAxhh1pnQugG0kf13VC"
     });
   }

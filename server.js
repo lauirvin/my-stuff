@@ -124,6 +124,6 @@ app.post("/comment/:id", checkJwt, (req, res) => {
 });
 
 // Start the server
-app.listen(8081, () => {
-  console.log("listening on port 8081");
+app.listen(9000, () => {
+  console.log("listening on port 9000");
 });
