@@ -143,6 +143,7 @@ class CreateItem extends Component {
                   <label htmlFor="price">Price:</label>
                   <br />
                   <select
+	    	    className="custom-select"
                     id="currencyBox"
                     defaultValue="default"
                     onBlur={e => {
@@ -174,12 +175,14 @@ class CreateItem extends Component {
                   <label htmlFor="price">Country & Region:</label>
                   <br />
                   <CountryDropdown
-                    id="countryBox"
+	            className="custom-select"
+	            id="countryBox"
                     value={country}
                     onChange={val => this.updateCountry(val)}
                   />
                   &nbsp;&nbsp;
                   <RegionDropdown
+	            className="custom-select"
                     id="regionBox"
                     country={country}
                     value={region}
@@ -190,6 +193,7 @@ class CreateItem extends Component {
                   <label htmlFor="condition">Condition:</label>
                   <br />
                   <select
+	            className="custom-select"
                     defaultValue="default"
                     id="conditionBox"
                     onBlur={e => {
