@@ -20,7 +20,7 @@ class Item extends Component {
     const {
       match: { params }
     } = this.props;
-    const item = (await axios.get(`http://ec2-18-130-97-126.eu-west-2.compute.amazonaws.com:9000/${params.itemId}`)) // Fetch item data
+    const item = (await axios.get(`http://localhost:9000/${params.itemId}`)) // Fetch item data
       .data;
     this.setState({
       item
@@ -30,7 +30,7 @@ class Item extends Component {
   async submitComment(comment) {
     // Post comment to server
     await axios.post(
-      `http://ec2-18-130-97-126.eu-west-2.compute.amazonaws.com:9000/comment/${this.state.item.id}`,
+      `http://localhost:9000/comment/${this.state.item.id}`,
       {
         comment
       },

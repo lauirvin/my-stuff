@@ -90,7 +90,7 @@ class CreateItem extends Component {
       disabled: true
     });
 
-    await axios.post("http://ec2-18-130-97-126.eu-west-2.compute.amazonaws.com:9000/", formData, config); // Post to '/upload' on the server
+    await axios.post("http://localhost:9000/", formData, config); // Post to '/upload' on the server
     this.props.history.push("/");
   }
 
