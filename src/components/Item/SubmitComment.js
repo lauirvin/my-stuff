@@ -17,8 +17,6 @@ class SubmitComment extends Component {
   }
 
   submit() {
-
-
     this.props.submitComment(this.state.comment);
 
     this.setState({
@@ -34,8 +32,7 @@ class SubmitComment extends Component {
           <label htmlFor="comments">Comments:</label>
           <input
             type="text"
-            onChange={
-              e => {
+            onChange={e => {
               this.updateComment(e.target.value);
             }}
             className="form-control"
