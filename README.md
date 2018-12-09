@@ -1,10 +1,11 @@
-# Yummy App
-Recipe sharing application.
+# My Stuff: Classified Ads Web App
+My Stuff is a classified ads web application that allow users to advertise their things for selling.
+[Click here to launch **My Stuff: Classified Ads Web App**](http://ec2-18-130-97-126.eu-west-2.compute.amazonaws.com)
 
 ## Deployment
 1. Locate the repository in bash
-2. Run ```npm run dev```
-3. Open browser and navigate to ```localhost.3000/```
+2. Run ```sudo npm run dev```
+3. Open browser and navigate to ```http://ec2-xxx-xxx-xxx-xxx.compute-1.amazonaws.com/```
 
 ### Prerequisites
 1. Install NodeJS https://nodejs.org/en/
