@@ -11,19 +11,18 @@ class SubmitComment extends Component {
   }
 
   updateComment(value) {
-    this.setState({
-      comment: value // Update comment
-    });
+    if (!value === "") {
+      this.setState({
+        comment: value // Update comment
+      });
+    }
   }
 
   submit() {
-    if (!this.state.value === "") {
-      this.props.submitComment(this.state.comment);
-
-      this.setState({
-        comment: ""
-      });
-    }
+    this.props.submitComment(this.state.comment);
+    this.setState({
+      comment: ""
+    });
   }
 
   render() {
