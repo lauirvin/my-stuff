@@ -56,7 +56,7 @@ class Item extends Component {
             </div>
             <hr className="my-4" />
             <h2 className="item-subtitle">
-              <b>Price:</b> &nbsp; &nbsp; {item.price}
+              <b>Price:</b> &nbsp; &nbsp; {item.currency}{item.price}
             </h2>
             <hr className="my-4" />
             <h2 className="item-subtitle">
