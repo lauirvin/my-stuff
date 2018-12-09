@@ -1,5 +1,5 @@
 # My Stuff: Classified Ads Web App
-My Stuff is a classified ads web application that allow users to advertise their things for selling.
+My Stuff is a classified ads web application that allow users to advertise their things for selling.  
 [Click here to launch **My Stuff: Classified Ads Web App**](http://ec2-18-130-97-126.eu-west-2.compute.amazonaws.com)
 
 ## Deployment
