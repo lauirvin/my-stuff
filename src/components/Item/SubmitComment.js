@@ -17,11 +17,13 @@ class SubmitComment extends Component {
   }
 
   submit() {
-    this.props.submitComment(this.state.comment);
+    if (!this.state.value === "") {
+      this.props.submitComment(this.state.comment);
 
-    this.setState({
-      comment: ""
-    });
+      this.setState({
+        comment: ""
+      });
+    }
   }
 
   render() {

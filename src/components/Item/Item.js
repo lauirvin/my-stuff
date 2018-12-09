@@ -46,7 +46,6 @@ class Item extends Component {
     const { item } = this.state;
     if (item === null) return <p>Loading ...</p>;
     const imagePath = item.image.replace("public/", "../");
-    console.log(imagePath);
     return (
       <div className="container">
         <div className="row">
